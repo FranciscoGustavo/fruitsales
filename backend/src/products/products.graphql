@@ -1,0 +1,41 @@
+type Query {
+  products(limit: Int, page: Int): [Product!]!
+  product(id: ID!): Product!
+}
+
+type Mutation {
+  createProduct(product: ProductDto!): Product!
+  updateProduct(id: ID!, product: ProductUde!): Product!
+  deleteProduct(id: ID!): ProductDle!
+}
+
+enum Unities {
+  pz
+  kg
+}
+
+type Product {
+  id: ID!
+  cover: String!
+  name: String!
+  unity: Unities!
+  createDateTime: String
+  updateDateTime: String
+}
+
+type ProductDle {
+  id: ID!
+  message: String!
+}
+
+input ProductDto {
+  cover: String!
+  name: String!
+  unity: Unities!
+}
+
+input ProductUde {
+  cover: String
+  name: String
+  unity: Unities
+}

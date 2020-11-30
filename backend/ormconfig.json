@@ -1,0 +1,19 @@
+{
+   "type": "postgres",
+   "host": "db",
+   "port": 5432,
+   "username": "admin",
+   "password": "123456",
+   "database": "fruits",
+   "synchronize": true,
+   "logging": true,
+   "entities": [
+      "dist/**/*.entity{.ts,.js}"
+   ],
+   "migrations": [
+      "migration/*.ts"
+   ],
+   "cli": {
+      "migrationsDir": "migration"
+   }
+}

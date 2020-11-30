@@ -1,10 +1,37 @@
 import { Module } from '@nestjs/common';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
+import { GraphQLModule } from '@nestjs/graphql';
+import { join } from 'path';
+import { TypeOrmModule } from '@nestjs/typeorm';
+
+import { ProductsModule } from './products/products.module';
 
 @Module({
-  imports: [],
-  controllers: [AppController],
-  providers: [AppService],
+  imports: [
+    TypeOrmModule.forRoot({
+      type: 'postgres',
+      host: 'db',
+      port: 5432,
+      username: 'admin',
+      password: '123456',
+      database: 'fruits',
+      entities: ["dist/**/*.entity{.ts,.js}"],
+      migrationsTableName: 'migration',
+      migrations: ['src/migration/*.ts'],
+      cli: {
+        migrationsDir: 'src/migration',
+      },
+      ssl: false,
+    }),
+    GraphQLModule.forRoot({
+      debug: true,
+      playground: true,
+      typePaths: ['./**/*.graphql'],
+      definitions: {
+        path: join(process.cwd(), 'src/graphql.ts'),
+        outputAs: 'interface',
+      },
+    }),
+    ProductsModule,
+  ],
 })
 export class AppModule {}
