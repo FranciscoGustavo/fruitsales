@@ -1,4 +1,4 @@
-import { RowCSS, CellCSS } from './styles';
+import { RowCSS, CellCSS, ButtonCSS } from './styles';
 
 const ProductRow = ({ id, name, price, unity, handleClick }) => {
   return (
@@ -7,7 +7,7 @@ const ProductRow = ({ id, name, price, unity, handleClick }) => {
       <CellCSS>{price}</CellCSS>
       <CellCSS>{unity}</CellCSS>
       <CellCSS>
-        <button onClick={() => handleClick(id)}>Editar</button>
+        <ButtonCSS onClick={() => handleClick(id)}>Editar</ButtonCSS>
       </CellCSS>
     </RowCSS>
   );

@@ -11,3 +11,10 @@ export const CellCSS = styled.td`
 padding: 14px;
 white-space: nowrap;
 `;
+
+export const ButtonCSS = styled.button`
+padding: 7px 14px;
+background-color: transparent;
+text-decoration: underline;
+cursor: pointer;
+`;

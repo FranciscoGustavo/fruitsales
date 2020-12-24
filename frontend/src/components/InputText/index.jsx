@@ -1,10 +1,10 @@
 import { InputTextCSS } from './styles';
 
-const InputText = ({ type, label, options = false }) => {
+const InputText = ({ type, label, name, value, options = false, handleChange }) => {
   const renderOptions = () => {
     if (options) 
       return options.map((option) => (
-          <option value="volvo">{option}</option>
+          <option key={option} value={option}>{option}</option>
         )
       );
       return null;
@@ -12,7 +12,7 @@ const InputText = ({ type, label, options = false }) => {
 
   const renderSelect = () => {
     return (
-      <select name="cars" id="cars">
+      <select id={name} name={name} onChange={handleChange}>
         {renderOptions()}
       </select>
     );
@@ -20,12 +20,12 @@ const InputText = ({ type, label, options = false }) => {
 
   return (
     <InputTextCSS>
-      <label htmlFor="">{label}</label>
+      <label htmlFor={name}>{label}</label>
       <div>
         {
           type === 'select'
           ? renderSelect()
-          : <input type={type} />
+          : <input type={type} id={name} name={name} value={value} onChange={handleChange} />
         }
       </div>
     </InputTextCSS>

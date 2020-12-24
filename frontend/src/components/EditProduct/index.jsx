@@ -1,8 +1,10 @@
 import { InputText } from '../index';
 import { ContainerCSS, EditCSS, RowCSS, ButtonCSS } from './styles';
 
-const EditProduct = ({ isOpen, close, save }) => {
-  if (!isOpen) return null;
+const EditProduct = ({ isOpen, close, save, product, handleChange }) => {
+  const handleSave = () => save(product);
+  
+  if (!isOpen || !product) return null;
   return (
     <ContainerCSS>
       <EditCSS>
@@ -15,6 +17,9 @@ const EditProduct = ({ isOpen, close, save }) => {
             <InputText
               type="text"
               label="Nombre"
+              name="name"
+              value={product.name}
+              handleChange={handleChange}
             />
           </RowCSS>
           <RowCSS
@@ -26,16 +31,22 @@ const EditProduct = ({ isOpen, close, save }) => {
             <InputText
               type="number"
               label="Precio"
+              name="price"
+              value={product.price}
+              handleChange={handleChange}
             />
             <InputText
               type="select"
               label="Unidad"
+              name="unity"
+              value={product.unity}
               options={["pz", "kg"]}
+              handleChange={handleChange}
             />
           </RowCSS>
         </div>
         <RowCSS>
-          <ButtonCSS onClick={save}>Guardar</ButtonCSS>
+          <ButtonCSS onClick={handleSave}>Guardar</ButtonCSS>
           <ButtonCSS onClick={close}>Cancelar</ButtonCSS>
         </RowCSS>
       </EditCSS>

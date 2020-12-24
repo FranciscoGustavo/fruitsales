@@ -4,10 +4,7 @@ import { RowCSS } from '../ProductRow/styles';
 
 const ProductsListTable = ({ products, handleEdit }) => {
 
-  const handleClick = (id) => {
-    alert(id);
-    handleEdit(true);
-  }
+  const handleClick = (id) => handleEdit(id);
   return (
     <ContainerCSS>
       <TableContainerCSS>
