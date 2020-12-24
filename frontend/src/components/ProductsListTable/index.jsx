@@ -2,10 +2,11 @@ import { ProductRow } from '../index';
 import { TableContainerCSS, TableCSS, CellCSS } from './styles';
 import { RowCSS } from '../ProductRow/styles';
 
-const ProductsListTable = ({ products }) => {
+const ProductsListTable = ({ products, handleEdit }) => {
 
   const handleClick = (id) => {
     alert(id);
+    handleEdit(true);
   }
   return (
     <TableContainerCSS>
