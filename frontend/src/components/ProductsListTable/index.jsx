@@ -14,7 +14,7 @@ const ProductsListTable = ({ products }) => {
           <RowCSS>
             <CellCSS>Nombre</CellCSS>
             <CellCSS>Precio</CellCSS>
-            <CellCSS />
+            <CellCSS>Unidad</CellCSS>
             <CellCSS />
           </RowCSS>
         </thead>

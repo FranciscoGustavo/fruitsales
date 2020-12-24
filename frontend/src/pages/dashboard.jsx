@@ -1,4 +1,4 @@
-import { ProductsListTable } from '../components';
+import { ProductsListTable, LayoutDashboard } from '../components';
 
 const Dashboard = () => {
   const products = [
@@ -18,13 +18,7 @@ const Dashboard = () => {
   ];
 
   return (
-    <>
-      <header>
-        HEADER
-      </header>
-      <nav>
-        Navegación
-      </nav>
+    <LayoutDashboard>
       <main className="main">
         <ProductsListTable products={products} />
         <div className="edit-product">
@@ -90,7 +84,7 @@ const Dashboard = () => {
           }
         `}</style>
       </main>
-    </>
+    </LayoutDashboard>
   );
 }
 
