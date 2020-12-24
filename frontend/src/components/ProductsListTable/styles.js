@@ -1,5 +1,9 @@
 import styled from 'styled-components';
 
+export const ContainerCSS = styled.div`
+padding: 28px;
+`;
+
 export const TableContainerCSS = styled.div`
 width: 100%;
 border-radius: 14px;

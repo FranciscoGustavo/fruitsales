@@ -28,6 +28,7 @@ const Dashboard = () => {
       <EditProduct
         isOpen={editProduct}
         close={() => setEditProduct(false)}
+        save={() => setEditProduct(false)}
       />
     </LayoutDashboard>
   );

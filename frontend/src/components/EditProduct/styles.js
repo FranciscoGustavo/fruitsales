@@ -19,3 +19,16 @@ border-radius: 14px;
 padding: 14px;
 background-color: #FFF;
 `;
+
+export const RowCSS = styled.div`
+display: ${props => props.display ? props.display : 'block'};
+grid-template-columns: ${props => props.templateColumns ? props.templateColumns : '1fr'};
+gap: ${props => props.gap ? props.gap : '0'};
+margin-bottom: ${props => props.marginBottom ? props.marginBottom : 0};
+`;
+
+export const ButtonCSS = styled.button`
+border-radius: 7px;
+padding: 14px;
+cursor: pointer;
+`;

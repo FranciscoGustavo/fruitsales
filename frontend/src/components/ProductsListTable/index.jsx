@@ -1,5 +1,5 @@
 import { ProductRow } from '../index';
-import { TableContainerCSS, TableCSS, CellCSS } from './styles';
+import { ContainerCSS, TableContainerCSS, TableCSS, CellCSS } from './styles';
 import { RowCSS } from '../ProductRow/styles';
 
 const ProductsListTable = ({ products, handleEdit }) => {
@@ -9,32 +9,34 @@ const ProductsListTable = ({ products, handleEdit }) => {
     handleEdit(true);
   }
   return (
-    <TableContainerCSS>
-      <TableCSS>
-        <thead>
-          <RowCSS>
-            <CellCSS>Nombre</CellCSS>
-            <CellCSS>Precio</CellCSS>
-            <CellCSS>Unidad</CellCSS>
-            <CellCSS />
-          </RowCSS>
-        </thead>
-        <tbody>
-          {
-            products.map(({ id, name, price, unity }) => (
-              <ProductRow
-                key={id}
-                id={id}
-                name={name}
-                price={price}
-                unity={unity}
-                handleClick={handleClick}
-              />
-            ))
-          }
-        </tbody>
-      </TableCSS>
-    </TableContainerCSS>
+    <ContainerCSS>
+      <TableContainerCSS>
+        <TableCSS>
+          <thead>
+            <RowCSS>
+              <CellCSS>Nombre</CellCSS>
+              <CellCSS>Precio</CellCSS>
+              <CellCSS>Unidad</CellCSS>
+              <CellCSS />
+            </RowCSS>
+          </thead>
+          <tbody>
+            {
+              products.map(({ id, name, price, unity }) => (
+                <ProductRow
+                  key={id}
+                  id={id}
+                  name={name}
+                  price={price}
+                  unity={unity}
+                  handleClick={handleClick}
+                />
+              ))
+            }
+          </tbody>
+        </TableCSS>
+      </TableContainerCSS>
+    </ContainerCSS>
   );
 }
 

@@ -1,7 +1,7 @@
 import { InputText } from '../index';
-import { ContainerCSS, EditCSS } from './styles';
+import { ContainerCSS, EditCSS, RowCSS, ButtonCSS } from './styles';
 
-const EditProduct = ({ isOpen, close }) => {
+const EditProduct = ({ isOpen, close, save }) => {
   if (!isOpen) return null;
   return (
     <ContainerCSS>
@@ -11,11 +11,18 @@ const EditProduct = ({ isOpen, close }) => {
           <img src="" alt=""/>
         </div>
         <div>
-          <InputText
-            type="text"
-            label="Nombre"
-          />
-          <div className="row">
+          <RowCSS marginBottom="20px" >
+            <InputText
+              type="text"
+              label="Nombre"
+            />
+          </RowCSS>
+          <RowCSS
+            display="grid"
+            templateColumns="1fr 1fr"
+            gap="28px"
+            marginBottom="20px"
+          >
             <InputText
               type="number"
               label="Precio"
@@ -25,12 +32,12 @@ const EditProduct = ({ isOpen, close }) => {
               label="Unidad"
               options={["pz", "kg"]}
             />
-          </div>
+          </RowCSS>
         </div>
-        <div>
-          <button>Guardar</button>
-          <button onClick={close}>Cancelar</button>
-        </div>
+        <RowCSS>
+          <ButtonCSS onClick={save}>Guardar</ButtonCSS>
+          <ButtonCSS onClick={close}>Cancelar</ButtonCSS>
+        </RowCSS>
       </EditCSS>
     </ContainerCSS>
   ); 
