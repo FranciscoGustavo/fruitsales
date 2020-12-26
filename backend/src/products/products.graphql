@@ -19,6 +19,7 @@ type Product {
   cover: String!
   name: String!
   unity: Unities!
+  price: Int!
   createDateTime: String
   updateDateTime: String
 }

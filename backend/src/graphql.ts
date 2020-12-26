@@ -39,6 +39,7 @@ export interface Product {
     cover: string;
     name: string;
     unity: Unities;
+    price: number;
     createDateTime?: string;
     updateDateTime?: string;
 }

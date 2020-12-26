@@ -18,6 +18,9 @@ export class Product {
   @Column({ type: 'enum', enum: Unities, default: Unities.kg })
   unity: Unities;
 
+  @Column({ type: 'float', default: 0 })
+  price: number;
+
   @CreateDateColumn({ type: 'timestamptz', default: () => 'CURRENT_TIMESTAMP' })
   createDateTime: Date;
 

@@ -1,27 +1,24 @@
 import { useState } from 'react';
+import { gql, useQuery } from '@apollo/client';
 import { ProductsListTable, LayoutDashboard, EditProduct } from '../components';
 
+export const ALL_PRODUCTS_QUERY = gql`{
+  products {
+    id
+    cover
+    name
+    price
+    unity
+  }
+}`;
+
 const Dashboard = () => {
+  const { loading, error, data } = useQuery(ALL_PRODUCTS_QUERY);
   const [editProduct, setEditProduct] = useState(false);
   const [product, setProduct] = useState();
-  const products = [
-    { id: 1, name: 'Papa blanca grande', price: '14.50', unity: 'kg' },
-    { id: 2, name: 'Papa blanca grande', price: '14.50', unity: 'pz' },
-    { id: 3, name: 'Papa blanca grande', price: '14.50', unity: 'pz' },
-    { id: 4, name: 'Papa blanca grande', price: '14.50', unity: 'pz' },
-    { id: 5, name: 'Papa blanca grande', price: '14.50', unity: 'pz' },
-    { id: 6, name: 'Papa blanca grande', price: '14.50', unity: 'pz' },
-    { id: 7, name: 'Papa blanca grande', price: '14.50', unity: 'pz' },
-    { id: 8, name: 'Papa blanca grande', price: '14.50', unity: 'pz' },
-    { id: 9, name: 'Papa blanca grande', price: '14.50', unity: 'pz' },
-    { id: 10, name: 'Papa blanca grande', price: '14.50', unity: 'pz' },
-    { id: 11, name: 'Papa blanca grande', price: '14.50', unity: 'pz' },
-    { id: 12, name: 'Papa blanca grande', price: '14.50', unity: 'pz' },
-    { id: 13, name: 'Papa blanca grande', price: '14.50', unity: 'pz' },
-  ];
-
+  console.log(data);
   const handleEdit = (productId) => {
-    setProduct(products.find(({ id }) => productId === id ));
+    setProduct(data.products.find(({ id }) => productId === id ));
     setEditProduct(true);
   }
 
@@ -41,11 +38,12 @@ const Dashboard = () => {
       [e.target.name]: e.target.value
     });
   }
-
+  if (loading) return <h1>Cargando</h1>
+  if (error) return <h1>Cargando</h1>
   return (
     <LayoutDashboard>
       <ProductsListTable
-        products={products}
+        products={data.products}
         handleEdit={handleEdit}
       />
       <EditProduct
