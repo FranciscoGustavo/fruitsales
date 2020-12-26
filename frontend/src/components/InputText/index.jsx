@@ -1,4 +1,4 @@
-import { InputTextCSS } from './styles';
+import { InputTextCSS, LabelCSS } from './styles';
 
 const InputText = ({ type, label, name, value, options = false, handleChange }) => {
   const renderOptions = () => {
@@ -20,7 +20,7 @@ const InputText = ({ type, label, name, value, options = false, handleChange }) 
 
   return (
     <InputTextCSS>
-      <label htmlFor={name}>{label}</label>
+      <LabelCSS htmlFor={name}>{label}</LabelCSS>
       <div>
         {
           type === 'select'

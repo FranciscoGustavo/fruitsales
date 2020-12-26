@@ -17,3 +17,9 @@ export const InputTextCSS = styled.div`
   }
 }
 `;
+
+export const LabelCSS = styled.label`
+display: block;
+margin-bottom: 7px;
+font-size: 12px;
+`;

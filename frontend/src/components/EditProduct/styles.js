@@ -16,7 +16,7 @@ overflow: hidden;
 export const EditCSS = styled.div`
 width: 50%;
 border-radius: 14px;
-padding: 14px;
+padding: 42px 28px;
 background-color: #FFF;
 `;
 
@@ -29,6 +29,14 @@ margin-bottom: ${props => props.marginBottom ? props.marginBottom : 0};
 
 export const ButtonCSS = styled.button`
 border-radius: 7px;
-padding: 14px;
+padding: 7px 14px;
 cursor: pointer;
+`;
+
+export const ImgCSS = styled.img`
+width: 150px;
+height: 150px;
+border-radius: 50%;
+object-fit: cover;
+overflow: hidden;
 `;
