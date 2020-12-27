@@ -14,12 +14,14 @@ export enum Unities {
 export interface ProductDto {
     cover: string;
     name: string;
+    price?: number;
     unity: Unities;
 }
 
 export interface ProductUde {
     cover?: string;
     name?: string;
+    price?: number;
     unity?: Unities;
 }
 

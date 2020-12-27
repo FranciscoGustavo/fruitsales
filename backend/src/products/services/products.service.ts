@@ -37,6 +37,7 @@ export class ProductsService {
     data.cover = product.cover;
     data.name = product.name;
     data.unity = product.unity;
+    data.price = product.price;
 
     const createdProduct = await this.productsRepo.save(data);
     return createdProduct;

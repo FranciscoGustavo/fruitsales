@@ -19,7 +19,7 @@ type Product {
   cover: String!
   name: String!
   unity: Unities!
-  price: Int!
+  price: Float!
   createDateTime: String
   updateDateTime: String
 }
@@ -32,11 +32,13 @@ type ProductDle {
 input ProductDto {
   cover: String!
   name: String!
+  price: Float
   unity: Unities!
 }
 
 input ProductUde {
   cover: String
   name: String
+  price: Float
   unity: Unities
 }

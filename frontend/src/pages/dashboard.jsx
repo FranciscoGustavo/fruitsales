@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { gql, useQuery } from '@apollo/client';
+import { gql, useQuery, useMutation } from '@apollo/client';
 import { ProductsListTable, LayoutDashboard, EditProduct } from '../components';
 
 export const ALL_PRODUCTS_QUERY = gql`{
@@ -12,8 +12,20 @@ export const ALL_PRODUCTS_QUERY = gql`{
   }
 }`;
 
+export const UPDATE_PRODUCT = gql`
+mutation updateProduct($id: ID! $product: ProductUde!) {
+    updateProduct(id: $id product: $product) {
+      id
+      name
+      price
+      cover
+    }
+  }
+`;
+
 const Dashboard = () => {
   const { loading, error, data } = useQuery(ALL_PRODUCTS_QUERY);
+  const [updateProduct] = useMutation(UPDATE_PRODUCT);
   const [editProduct, setEditProduct] = useState(false);
   const [product, setProduct] = useState();
   console.log(data);
@@ -29,7 +41,20 @@ const Dashboard = () => {
 
   const handleSave = (product) => {
     console.log(product);
-    handleClose();
+    updateProduct({ variables: {
+      id: product.id,
+      product: {
+        name: product.name,
+        price: Number(product.price),
+        unity: product.unity
+      }
+    }})
+    .then(() => {
+      handleClose();
+    })
+    .catch(err => {
+      console.log(err);
+    })
   }
 
   const handleChange = (e) => {
