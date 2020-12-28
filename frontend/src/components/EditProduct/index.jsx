@@ -14,7 +14,7 @@ const EditProduct = ({ isOpen, close, save, product, handleChange }) => {
           gap="28px"
         >
           <div>
-            <ImgCSS src="https://www.gob.mx/cms/uploads/article/main_image/16716/papa.jpg" alt=""/>
+            <ImgCSS src={product.cover} alt=""/>
           </div>
           <div>
             <div>

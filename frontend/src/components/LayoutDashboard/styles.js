@@ -18,6 +18,7 @@ box-shadow: 0 0 7px rgba(0, 0, 0, 0.14);
 export const NavCSS = styled.div`
 grid-column: 1 / 2;
 grid-row: 2 / 3;
+background-color: red;
 `;
 
 export const MainCSS = styled.div`

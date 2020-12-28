@@ -1,30 +1,12 @@
 import { useState } from 'react';
-import { gql, useQuery, useMutation } from '@apollo/client';
+import { useQuery, useMutation } from '@apollo/client';
 import { ProductsListTable, LayoutDashboard, EditProduct } from '../components';
+import { ALL_PRODUCTS, UPDATE_PRODUCT } from '../graphql';
 
-export const ALL_PRODUCTS_QUERY = gql`{
-  products {
-    id
-    cover
-    name
-    price
-    unity
-  }
-}`;
 
-export const UPDATE_PRODUCT = gql`
-mutation updateProduct($id: ID! $product: ProductUde!) {
-    updateProduct(id: $id product: $product) {
-      id
-      name
-      price
-      cover
-    }
-  }
-`;
 
 const Dashboard = () => {
-  const { loading, error, data } = useQuery(ALL_PRODUCTS_QUERY);
+  const { loading, error, data } = useQuery(ALL_PRODUCTS);
   const [updateProduct] = useMutation(UPDATE_PRODUCT);
   const [editProduct, setEditProduct] = useState(false);
   const [product, setProduct] = useState();
