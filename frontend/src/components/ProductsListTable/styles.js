@@ -1,7 +1,9 @@
 import styled from 'styled-components';
 
 export const ContainerCSS = styled.div`
+height: 100%;
 padding: 28px;
+background-color: rgba(${props => props.theme.hexToRgba(props.theme.primary, 0.07)});
 `;
 
 export const TableContainerCSS = styled.div`
@@ -19,6 +21,11 @@ border-collapse: collapse;
 `;
 
 export const CellCSS = styled.th`
-padding: 14px;
+padding: 12px 24px;
 white-space: nowrap;
+background-color: rgba(${props => props.theme.hexToRgba(props.theme.primary, 0.8)});
+color: #FFF;
+text-transform: uppercase;
+font-size: 15px;
+font-weight: bold;
 `;

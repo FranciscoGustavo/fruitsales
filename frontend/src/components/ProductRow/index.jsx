@@ -1,9 +1,14 @@
-import { RowCSS, CellCSS, ButtonCSS } from './styles';
+import { RowCSS, CellCSS, ButtonCSS, TitleImgCSS } from './styles';
 
-const ProductRow = ({ id, name, price, unity, handleClick }) => {
+const ProductRow = ({ id, cover, name, price, unity, handleClick }) => {
   return (
     <RowCSS>
-      <CellCSS>{name}</CellCSS>
+      <CellCSS>
+        <TitleImgCSS>
+          <img src={cover} alt={name}/>
+          <p>{name}</p>
+        </TitleImgCSS>
+      </CellCSS>
       <CellCSS>{price}</CellCSS>
       <CellCSS>{unity}</CellCSS>
       <CellCSS>
