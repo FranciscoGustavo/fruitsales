@@ -4,3 +4,5 @@ export const hexToRgb = (hex) => {
     ? `${parseInt(result[1], 16)}, ${parseInt(result[2], 16)}, ${parseInt(result[3], 16)}`
     : null;
 }
+
+export { default as GlobalStyles, theme } from './styles';

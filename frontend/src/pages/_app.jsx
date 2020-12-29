@@ -1,24 +1,17 @@
 import { ApolloProvider } from '@apollo/client';
+import { ThemeProvider  } from 'styled-components';
 import { useApollo } from '../lib/apolloClient';
+import { GlobalStyles, theme } from '../utils';
 
 function MyApp({ Component, pageProps }) {
   const apolloClient = useApollo(pageProps.initialApolloState);
 
   return (
     <ApolloProvider client={apolloClient}>
-      <Component {...pageProps} />
-      <style jsx global>{`
-        * {
-          margin: 0;
-          padding: 0;
-          border: 0;
-          box-sizing: border-box;
-          outline: none;
-          font-family: 'Lato', sans-serif;
-          font-size: 14px;
-          font-weight: normal;
-        }
-      `}</style>
+      <GlobalStyles />
+      <ThemeProvider theme={theme}>
+        <Component {...pageProps} />
+      </ThemeProvider> 
     </ApolloProvider>
   );
 }

@@ -8,3 +8,4 @@ export { default as LayoutDashboard } from './LayoutDashboard';
 export { default as EditProduct } from './EditProduct';
 export { default as InputText } from './InputText';
 export { default as Footer } from './Footer';
+export { default as HomePage } from './HomePage';
