@@ -1,18 +1,24 @@
 import { Header, Card, ProductsList, Description, Footer } from '../index';
+import { ContainerCSS } from './styles';
 
-const HomePage = () => {
+const HomePage = ({ products }) => {
   return (
-    <main>
+    <ContainerCSS>
       <Header />
       <Description />
       <ProductsList
-        data={[1,2,3,4,5,6,7,8,9,10,11,12]}
-        render={(n, idx) => (
-          <Card key={idx} />
+        data={products}
+        render={({ id, name, cover, price }) => (
+          <Card
+            key={id}
+            name={name}
+            cover={cover}
+            price={price}
+          />
         )}
       />
       <Footer />
-    </main>
+    </ContainerCSS>
   );
 }
 

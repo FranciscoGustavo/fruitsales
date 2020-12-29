@@ -1,4 +1,5 @@
 import { createGlobalStyle } from 'styled-components';
+import { hexToRgb } from '../utils';
 
 const GlobalStyles = createGlobalStyle`
 * {
@@ -14,7 +15,10 @@ const GlobalStyles = createGlobalStyle`
 `;
 export const theme = {
   primary: '#2A4858',
-  secondary: '#38A49B'
+  secondary: '#38A49B',
+  hexToRgba: (color, opacity) => {
+    return `${hexToRgb(color)}, ${opacity}`;
+  }
 };
 
 export default GlobalStyles;

@@ -1,11 +1,11 @@
 import { CardCSS, InfoCSS } from './styles';
 
-const Card = () => (
+const Card = ({ name, cover, price }) => (
   <CardCSS>
-    <img src="/brocoli.svg" alt="" />
+    <img src={cover} alt={name} />
     <InfoCSS>
-      <h3>Brocoli con poco pata</h3>
-      <p>$ 125.00</p>
+      <h3>{name}</h3>
+      <p>$ {price}</p>
     </InfoCSS>
   </CardCSS>
 );

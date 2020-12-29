@@ -3,13 +3,15 @@ import { HomePage } from '../components';
 import { ALL_PRODUCTS } from '../graphql';
 
 export const getStaticProps = async () => {
-  // const { loading, error, data } = useQuery(ALL_PRODUCTS);
   return { props: {} };
 } 
 
 const Home = () => {
+  const { loading, error, data } = useQuery(ALL_PRODUCTS);
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p>Error :(</p>;
   return (
-    <HomePage />
+    <HomePage products={data.products}/>
   );
 }
 
