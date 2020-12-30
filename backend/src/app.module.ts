@@ -4,6 +4,8 @@ import { join } from 'path';
 import { TypeOrmModule } from '@nestjs/typeorm';
 
 import { ProductsModule } from './products/products.module';
+import { AuthModule } from './auth/auth.module';
+import { UsersModule } from './users/users.module';
 
 @Module({
   imports: [
@@ -32,6 +34,8 @@ import { ProductsModule } from './products/products.module';
       },
     }),
     ProductsModule,
+    AuthModule,
+    UsersModule,
   ],
 })
 export class AppModule {}
