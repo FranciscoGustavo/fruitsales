@@ -28,6 +28,8 @@ export interface ProductUde {
 export interface IQuery {
     products(limit?: number, page?: number): Product[] | Promise<Product[]>;
     product(id: string): Product | Promise<Product>;
+    users(limit?: number, page?: number): User[] | Promise<User[]>;
+    whoAmI(): User | Promise<User>;
 }
 
 export interface IMutation {
@@ -49,4 +51,8 @@ export interface Product {
 export interface ProductDle {
     id: string;
     message: string;
+}
+
+export interface User {
+    id: string;
 }

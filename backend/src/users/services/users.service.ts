@@ -7,11 +7,13 @@ export type User = any;
 export class UsersService {
   private readonly users = [
     {
+      id: 1,
       userId: 1,
       username: 'john',
       password: 'changeme',
     },
     {
+      id: 2,
       userId: 2,
       username: 'maria',
       password: 'guess',
@@ -20,5 +22,9 @@ export class UsersService {
 
   async findOne(username: string): Promise<User | undefined> {
     return this.users.find(user => user.username === username);
+  }
+
+  async getAllUsers(): Promise<any> {
+    return this.users;
   }
 }

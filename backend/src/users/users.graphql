@@ -1,0 +1,8 @@
+type Query {
+  users(limit: Int, page: Int): [User!]!
+  whoAmI: User!
+}
+
+type User {
+  id: ID!
+}
