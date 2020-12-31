@@ -21,9 +21,9 @@ export class ResolversResolver {
 
   @Query('whoAmI')
   @UseGuards(GqlAuthGuard)
-  async whoAmI(@CurrentUser() user: any): Promise<any> {
+  async whoAmI(@CurrentUser() user: any): Promise<any> {  
     try {
-      const users = await this.userService.findOne('john');
+      const users = await this.userService.findOne(user.username);
       return users;
     } catch (error) {
       

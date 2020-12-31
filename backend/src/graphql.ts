@@ -27,6 +27,7 @@ export interface ProductUde {
 
 export interface IMutation {
     login(username: string, password: string): Token | Promise<Token>;
+    singup(username: string, password: string): User | Promise<User>;
     createProduct(product: ProductDto): Product | Promise<Product>;
     updateProduct(id: string, product: ProductUde): Product | Promise<Product>;
     deleteProduct(id: string): ProductDle | Promise<ProductDle>;
@@ -35,6 +36,12 @@ export interface IMutation {
 export interface Token {
     id: string;
     access_token: string;
+}
+
+export interface User {
+    username: string;
+    password: string;
+    id: string;
 }
 
 export interface IQuery {
@@ -57,8 +64,4 @@ export interface Product {
 export interface ProductDle {
     id: string;
     message: string;
-}
-
-export interface User {
-    id: string;
 }

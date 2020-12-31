@@ -1,8 +1,14 @@
 type Mutation {
   login(username: String!, password: String!): Token!
+  singup(username: String!, password: String!): User!
 }
 
 type Token {
   id: ID!
   access_token: String!
+}
+
+type User {
+  username: String!
+  password: String!
 }
