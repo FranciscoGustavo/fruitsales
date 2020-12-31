@@ -1,5 +1,7 @@
+import { UseGuards } from '@nestjs/common';
 import { Resolver, Query, Mutation, Args } from '@nestjs/graphql';
 import { ProductsService } from '../services/products.service';
+import { GqlAuthGuard } from '../../auth/guards/gql-auth.guard';
 import { ProductDto, ProductUde } from '../../graphql';
 
 @Resolver('Products')
@@ -10,6 +12,7 @@ export class ProductsResolver {
   ) {}
 
   @Query('products')
+  @UseGuards(GqlAuthGuard)
   async getAllProducts(
     @Args('limit') limit: number,
     @Args('page') page: number,
