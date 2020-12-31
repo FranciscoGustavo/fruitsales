@@ -6,6 +6,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { ProductsModule } from './products/products.module';
 import { AuthModule } from './auth/auth.module';
 import { UsersModule } from './users/users.module';
+import { GqlAuthGuard } from './auth/guards/gql-auth.guard';
 
 @Module({
   imports: [
@@ -36,6 +37,12 @@ import { UsersModule } from './users/users.module';
     ProductsModule,
     AuthModule,
     UsersModule,
+  ],
+  providers: [
+    {
+      provide: 'APP_GUARD',
+      useClass: GqlAuthGuard
+    }
   ],
 })
 export class AppModule {}
