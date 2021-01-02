@@ -1,4 +1,5 @@
-import { ContainerCSS, HeaderCSS, NavCSS, MainCSS } from './styles';
+import Link from 'next/link';
+import { ContainerCSS, HeaderCSS, NavCSS, MainCSS,NavItemCSS } from './styles';
 
 const LayoutDashboard = ({children}) => {
   return (
@@ -7,7 +8,15 @@ const LayoutDashboard = ({children}) => {
         HEADER
       </HeaderCSS>
       <NavCSS>
-        Navegación
+        <Link href="/dashboard">
+          <NavItemCSS>Productos</NavItemCSS>
+        </Link>
+        <Link href="/dashboard/users">
+          <NavItemCSS>Usuarios</NavItemCSS>
+        </Link>
+        <Link href="/dashboard/price-list">
+          <NavItemCSS>Listas de precio</NavItemCSS>
+        </Link>
       </NavCSS>
       <MainCSS>
         {children}

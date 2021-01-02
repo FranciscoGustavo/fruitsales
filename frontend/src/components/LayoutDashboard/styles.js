@@ -25,3 +25,10 @@ export const MainCSS = styled.div`
 grid-column: 2 / 3;
 grid-row: 2 / 3;
 `;
+
+export const NavItemCSS = styled.a`
+display: block;
+padding: 14px;
+color: #FFF;
+cursor: pointer;
+`;

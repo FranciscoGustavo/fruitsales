@@ -1,9 +1,7 @@
 import { useState } from 'react';
 import { useQuery, useMutation } from '@apollo/client';
-import { ProductsListTable, LayoutDashboard, EditProduct } from '../components';
-import { ALL_PRODUCTS, UPDATE_PRODUCT, CREATE_PRODUCT } from '../graphql';
-
-
+import { ProductsListTable, LayoutDashboard, EditProduct } from '../../components';
+import { ALL_PRODUCTS, UPDATE_PRODUCT, CREATE_PRODUCT } from '../../graphql';
 
 const Dashboard = () => {
   const { loading, error, data } = useQuery(ALL_PRODUCTS);
