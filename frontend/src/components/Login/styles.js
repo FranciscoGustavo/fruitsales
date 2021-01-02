@@ -19,7 +19,7 @@ form {
     width: 300px;
   }
 
-  > input[type="text"] {
+  > input[type="text"], >  input[type="password"] {
     border-bottom: solid 1px gray;
     margin-bottom: 10px;
   }

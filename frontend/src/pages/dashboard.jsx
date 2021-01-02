@@ -37,14 +37,16 @@ const Dashboard = () => {
     console.log(product);
     if (!product.id) {
       alert('Creando...');
-      createProduct({ variables: {
-        product: {
-          name: product.name,
-          cover: product.cover,
-          price: Number(product.price),
-          unity: product.unity
-        }
-      }})
+      createProduct({
+        variables: {
+          product: {
+            name: product.name,
+            cover: product.cover,
+            price: Number(product.price),
+            unity: product.unity
+          }
+        },
+      })
         .then(() => {
           handleClose();
         })

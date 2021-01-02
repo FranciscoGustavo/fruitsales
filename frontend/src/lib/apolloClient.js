@@ -1,19 +1,32 @@
 import { useMemo } from 'react';
- import { ApolloClient, HttpLink, InMemoryCache } from '@apollo/client';
+import { ApolloClient, HttpLink, InMemoryCache } from '@apollo/client';
+import { setContext } from '@apollo/client/link/context';
 
- let apolloClient;
+let apolloClient;
 
- function createApolloClient() {
-   return new ApolloClient({
-     ssrMode: typeof window === 'undefined', // set to true for SSR
-     link: new HttpLink({
-       uri: 'http://localhost:5000/graphql',
-     }),
-     cache: new InMemoryCache(),
-   });
- }
+const authLink = setContext((_, { headers }) => {
+  // get the authentication token from local storage if it exists
+  const token = localStorage.getItem('token');
+  // return the headers to the context so httpLink can read them
+  return {
+    headers: {
+      ...headers,
+      authorization: token ? `bearer ${token}` : "",
+    }
+  }
+});
 
- export function initializeApollo(initialState = null) {
+function createApolloClient() {
+  return new ApolloClient({
+    ssrMode: typeof window === 'undefined', // set to true for SSR
+    link: authLink.concat(new HttpLink({
+      uri: 'http://localhost:5000/graphql',
+    })),
+    cache: new InMemoryCache(),
+  });
+}
+
+export function initializeApollo(initialState = null) {
   const _apolloClient = apolloClient ?? createApolloClient();
 
   // If your page has Next.js data fetching methods that use Apollo Client,
