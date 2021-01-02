@@ -27,7 +27,6 @@ export class AuthResolver {
       const createdUser = await this.authService.create(username, password);
       return createdUser;
     } catch (error) {
-      
     }
   }
 

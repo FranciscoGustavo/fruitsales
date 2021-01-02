@@ -1,6 +1,6 @@
 type Mutation {
   login(username: String!, password: String!): Token!
-  singup(username: String!, password: String!): User!
+  singup(username: String!, password: String!): UserDto!
 }
 
 type Token {
@@ -8,7 +8,7 @@ type Token {
   access_token: String!
 }
 
-type User {
+type UserDto {
   username: String!
   password: String!
 }
