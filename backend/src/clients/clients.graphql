@@ -1,0 +1,8 @@
+type Query {
+  clients(limit: Int, page: Int): [Client!]!
+}
+
+type Client {
+  id: ID!
+  username: String!
+}

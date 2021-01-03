@@ -44,10 +44,16 @@ export interface UserDto {
 }
 
 export interface IQuery {
+    clients(limit?: number, page?: number): Client[] | Promise<Client[]>;
     products(limit?: number, page?: number): Product[] | Promise<Product[]>;
     product(id: string): Product | Promise<Product>;
     users(limit?: number, page?: number): User[] | Promise<User[]>;
     whoAmI(): User | Promise<User>;
+}
+
+export interface Client {
+    id: string;
+    username: string;
 }
 
 export interface Product {

@@ -7,6 +7,9 @@ import { ProductsModule } from './products/products.module';
 import { AuthModule } from './auth/auth.module';
 import { UsersModule } from './users/users.module';
 import { GqlAuthGuard } from './auth/guards/gql-auth.guard';
+import { ClientsModule } from './clients/clients.module';
+import { OrdersModule } from './orders/orders.module';
+import { PricelistsModule } from './pricelists/pricelists.module';
 
 @Module({
   imports: [
@@ -37,6 +40,9 @@ import { GqlAuthGuard } from './auth/guards/gql-auth.guard';
     ProductsModule,
     AuthModule,
     UsersModule,
+    ClientsModule,
+    OrdersModule,
+    PricelistsModule,
   ],
   providers: [
     {
