@@ -17,6 +17,9 @@ const LayoutDashboard = ({children}) => {
         <Link href="/dashboard/price-list">
           <NavItemCSS>Listas de precio</NavItemCSS>
         </Link>
+        <Link href="/dashboard/orders">
+          <NavItemCSS>Pedidos</NavItemCSS>
+        </Link>
       </NavCSS>
       <MainCSS>
         {children}
