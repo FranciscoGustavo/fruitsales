@@ -20,6 +20,9 @@ const LayoutDashboard = ({children}) => {
         <Link href="/dashboard/orders">
           <NavItemCSS>Pedidos</NavItemCSS>
         </Link>
+        <Link href="/dashboard/clients">
+          <NavItemCSS>Clientes</NavItemCSS>
+        </Link>
       </NavCSS>
       <MainCSS>
         {children}
