@@ -1,7 +1,11 @@
+import { useMemo } from 'react';
 import { useTable } from 'react-table';
 import { ContainerCSS, TableContainerCSS, TableCSS, CellCSS, CellBodyCSS, RowCSS } from './styles';
 
-const Table = ({ columns, data }) => {
+const Table = ({ handleColumns, handleData }) => {
+  const columns = useMemo(() => handleColumns, []);
+  const data = useMemo(() => handleData, []);
+
   const {
     getTableProps,
     getTableBodyProps,

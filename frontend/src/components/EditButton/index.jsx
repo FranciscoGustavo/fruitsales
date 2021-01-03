@@ -1,6 +1,6 @@
-const EditButton = ({ uuid, handleEdit }) => {
+const EditButton = ({ data, handleEdit }) => {
   return (
-    <button onClick={() => handleEdit(uuid)}>Editar</button>
+    <button onClick={() => handleEdit(data)}>Editar</button>
   );
 }
 

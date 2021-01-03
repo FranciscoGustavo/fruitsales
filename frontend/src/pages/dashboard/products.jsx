@@ -1,53 +1,54 @@
-import { useState, useMemo } from 'react';
-import { useQuery } from '@apollo/client';
+import { useQuery, useMutation } from '@apollo/client';
 import { LayoutDashboard, Table, EditButton, EditProduct } from '../../components';
-import { ALL_PRODUCTS } from '../../graphql';
+import { ALL_PRODUCTS, UPDATE_PRODUCT } from '../../graphql';
+import { useHandleData } from '../../hooks';
 
 const ProductsPage = () => {
   const { loading, error, data } = useQuery(ALL_PRODUCTS);
-  const [modal, setModal] = useState(false);
-  const [product, setProduct] = useState();
-
-  const handleEdit = (uuid) => {
-    alert(`Editando ${uuid}`);
-    setProduct(data.products.find(({ id }) => uuid === id));
-    setModal(true);
-  }
-
-  const handleClose = () => {
-    setModal(false);
-    setProduct(false);
-  }
-
-  const handleChange = (e) => {
-    setProduct({
-      ...product,
-      [e.target.name]: e.target.value
-    });
-  }
+  const [updateProduct] = useMutation(UPDATE_PRODUCT);
+  const { 
+    modal, 
+    data: product,
+    handleOpen,
+    handleClose,
+    handleChange
+  } = useHandleData();
 
   const handleSave = (product) => {
     console.log(product);
+    updateProduct({ variables: {
+      id: product.id,
+      product: {
+        name: product.name,
+        price: Number(product.price),
+        unity: product.unity
+      }
+    }})
+    .then(() => {
+      handleClose();
+    })
+    .catch(err => {
+      console.log(err);
+    })
   }
 
-  const columns = useMemo(
-    () => [
-      { Header: 'Nombre', accessor: 'name' },
-      { Header: 'Precio', accessor: 'price' },
-      { Header: 'Unidad', accessor: 'unity' },
-      { 
-        accessor: 'id',
-        Cell: ({ value }) => <EditButton uuid={value} handleEdit={handleEdit} />
-      },
-    ],
-    []
-  );
+  const columns = [
+    { Header: 'Nombre', accessor: 'name' },
+    { Header: 'Precio', accessor: 'price' },
+    { Header: 'Unidad', accessor: 'unity' },
+    { 
+      id: 'edit',
+      Cell: ({ row }) => {
+        return <EditButton data={row.original} handleEdit={handleOpen} />
+      }
+    },
+  ];
 
   return (
     <LayoutDashboard>
       { error ? <h1>Ups! algo salió mal</h1> : null }
       { loading ? <h1>Cargando...</h1> : null }
-      { !error && !loading ? <Table columns={columns} data={data.products} /> : null }
+      { !error && !loading ? <Table handleColumns={columns} handleData={data.products} /> : null }
       <EditProduct
         isOpen={modal}
         close={handleClose}
