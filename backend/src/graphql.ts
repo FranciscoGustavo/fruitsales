@@ -45,6 +45,8 @@ export interface UserDto {
 
 export interface IQuery {
     clients(limit?: number, page?: number): Client[] | Promise<Client[]>;
+    orders(limit?: number, page?: number): Order[] | Promise<Order[]>;
+    order(id: string): Order | Promise<Order>;
     products(limit?: number, page?: number): Product[] | Promise<Product[]>;
     product(id: string): Product | Promise<Product>;
     users(limit?: number, page?: number): User[] | Promise<User[]>;
@@ -54,6 +56,22 @@ export interface IQuery {
 export interface Client {
     id: string;
     username: string;
+}
+
+export interface Order {
+    id: string;
+    client?: string;
+    totalProducts?: number;
+    totalPrice?: number;
+    description?: string;
+    products?: ProductOrder[];
+}
+
+export interface ProductOrder {
+    name?: string;
+    count?: number;
+    price?: number;
+    totalPrice?: number;
 }
 
 export interface Product {

@@ -1,0 +1,20 @@
+type Query {
+  orders(limit: Int, page: Int): [Order!]!
+  order(id: ID!): Order!
+}
+
+type Order {
+  id: ID!
+  client: String
+  totalProducts: Int
+  totalPrice: Float
+  description: String
+  products: [ProductOrder]
+}
+
+type ProductOrder {
+  name: String
+  count: Int
+  price: Float
+  totalPrice: Float
+}
