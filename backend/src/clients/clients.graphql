@@ -2,6 +2,10 @@ type Query {
   clients(limit: Int, page: Int): [Client!]!
 }
 
+type Mutation {
+  createClient(username: String!): Client!
+}
+
 type Client {
   id: ID!
   username: String!

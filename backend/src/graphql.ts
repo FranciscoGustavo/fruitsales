@@ -28,6 +28,7 @@ export interface ProductUde {
 export interface IMutation {
     login(username: string, password: string): Token | Promise<Token>;
     singup(username: string, password: string): UserDto | Promise<UserDto>;
+    createClient(username: string): Client | Promise<Client>;
     createProduct(product: ProductDto): Product | Promise<Product>;
     updateProduct(id: string, product: ProductUde): Product | Promise<Product>;
     deleteProduct(id: string): ProductDle | Promise<ProductDle>;

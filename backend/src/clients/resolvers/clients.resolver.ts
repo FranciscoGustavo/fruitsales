@@ -1,4 +1,4 @@
-import { Resolver, Query } from '@nestjs/graphql';
+import { Resolver, Query, Mutation, Args } from '@nestjs/graphql';
 import { ClientsService } from '../services/clients.service';
 
 @Resolver()
@@ -14,6 +14,16 @@ export class ClientsResolver {
       return clients
     } catch(err) {
 
+    }
+  }
+
+  @Mutation('createClient')
+  async create(@Args('username') username) {
+    try {
+      const createdClient = await this.clientsService.create(username);
+      return createdClient;
+    } catch (error) {
+      
     }
   }
 

@@ -15,4 +15,11 @@ export class ClientsService {
       }
     ]);
   }
+
+  async create(username: String) {
+    return Promise.resolve({
+      id: '1',
+      username,
+    });
+  }
 }
