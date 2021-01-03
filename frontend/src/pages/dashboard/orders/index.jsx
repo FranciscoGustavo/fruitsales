@@ -1,43 +1,26 @@
 import Link from 'next/link';
+import { useQuery } from '@apollo/client';
 import { LayoutDashboard, Table } from '../../../components';
+import { ALL_ORDERS } from '../../../graphql';
 
-
-const PriceListPage = () => {
+const OrdersPage = () => {
+  const { loading, error, data } = useQuery(ALL_ORDERS);
 
   const columns = [
     { Header: 'Cliente', accessor: 'client' },
-    { Header: 'Articulos', accessor: 'total_products' },
-    { Header: 'Precio total', accessor: 'total_price' },
+    { Header: 'Articulos', accessor: 'totalProducts' },
+    { Header: 'Precio total', accessor: 'totalPrice' },
     { Header: 'Descripción', accessor: 'description' },
     { id: 'view', Cell: <Link href="/dashboard/orders/details"><a>Ver</a></Link>}
   ];
 
-  const data = [
-    {
-      client: 'COME EN CASA @ SA DE CV',
-      total_price: 10563,
-      total_products: 15,
-      description: 'LOS CUENTOS DE CALLE BRONCA'
-    },
-    {
-      client: 'COME EN CASA @ SA DE CV',
-      total_price: 10563,
-      total_products: 2,
-      description: 'LOS CUENTOS DE CALLE BRONCA'
-    },
-    {
-      client: 'COME EN CASA @ SA DE CV',
-      total_price: 10563,
-      total_products: 7,
-      description: 'LOS CUENTOS DE CALLE BRONCA'
-    }
-  ];
-
   return (
     <LayoutDashboard>
-      <Table handleColumns={columns} handleData={data}/>
+      { error ? <h1>Ups! algo salió mal</h1> : null }
+      { loading ? <h1>Cargando...</h1> : null }
+      { !error && !loading ? <Table  handleColumns={columns} handleData={data.orders} /> : null }
     </LayoutDashboard>
   );
 }
 
-export default PriceListPage;
+export default OrdersPage;

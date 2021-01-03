@@ -1,29 +1,21 @@
 import Link from 'next/link';
+import { useQuery } from '@apollo/client';
 import { LayoutDashboard, Table } from '../../components';
-
+import { ALL_CLIENTS } from '../../graphql';
 
 const ClientsPage = () => {
+  const { loading, error, data } = useQuery(ALL_CLIENTS);
 
   const columns = [
-    { Header: 'Nombre', accessor: 'name' },
+    { Header: 'Nombre', accessor: 'username' },
     { id: 'view', Cell: <Link href="/dashboard/orders/details"><a>Editar</a></Link>}
-  ];
-
-  const data = [
-    {
-      name: 'COME EN CASA @ SA DE CV'
-    },
-    {
-      name: 'COME EN CASA @ SA DE CV'
-    },
-    {
-      name: 'COME EN CASA @ SA DE CV'
-    }
   ];
 
   return (
     <LayoutDashboard>
-      <Table handleColumns={columns} handleData={data}/>
+      { error ? <h1>Ups! algo salió mal</h1> : null }
+      { loading ? <h1>Cargando...</h1> : null }
+      { !error && !loading ? <Table  handleColumns={columns} handleData={data.clients} /> : null }
     </LayoutDashboard>
   );
 }
