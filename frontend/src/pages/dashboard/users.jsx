@@ -1,5 +1,5 @@
 import { useQuery } from '@apollo/client';
-import { LayoutDashboard, Table, EditButton } from '../../components';
+import { LayoutDashboard, Table, EditButton, ModalPage, FormUser } from '../../components';
 import { ALL_USERS } from '../../graphql';
 import { useHandleData } from '../../hooks';
 
@@ -12,6 +12,11 @@ const UsersPage = () => {
     handleClose,
     handleChange
   } = useHandleData();
+
+  const handleSave = (user) => {
+    console.log(user);
+    handleClose();
+  }
 
   const columns = [
     {
@@ -29,6 +34,14 @@ const UsersPage = () => {
       { error ? <h1>Ups! algo salió mal</h1> : null }
       { loading ? <h1>Cargando...</h1> : null }
       { !error && !loading ? <Table  handleColumns={columns} handleData={data.users} /> : null }
+      <ModalPage isOpen={modal}>
+        <FormUser 
+          user={user}
+          close={handleClose}
+          save={handleSave}
+          handleChange={handleChange}
+        />
+      </ModalPage>
     </LayoutDashboard>
   );
 }

@@ -12,3 +12,5 @@ export { default as HomePage } from './HomePage';
 export { default as Login } from './Login';
 export { default as Table } from './Table';
 export { default as EditButton } from './EditButton';
+export { default as ModalPage } from './ModalPage';
+export { default as FormUser } from './FormUser';
