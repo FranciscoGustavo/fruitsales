@@ -10,6 +10,8 @@ export class OrdersResolver {
   async getAll() {
     try {
       const orders = await this.ordersService.getAll();
+      console.log(orders);
+      
       return orders
     } catch(err) {
 
@@ -20,6 +22,7 @@ export class OrdersResolver {
   async getOne(@Args('id') id) {
     try {
       const order = await this.ordersService.getOne(id);
+      console.log(order.client);
       return order
     } catch(err) {
 

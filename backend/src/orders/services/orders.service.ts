@@ -1,39 +1,21 @@
 import { Injectable } from '@nestjs/common';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Repository } from 'typeorm';
+import { Order } from '../../models/orders.entity';
 
 @Injectable()
 export class OrdersService {
+  constructor(
+    @InjectRepository(Order) private ordersRepo: Repository<Order>,
+  ) {}
 
   async getAll() {
-    return Promise.resolve([
-      {
-        id: '123',
-        client: 'LA RANITA SA DE CV',
-        totalProducts: 10,
-        totalPrice: 10256.5,
-        description: 'PERSONAL'
-      },
-      {
-        id: '123',
-        client: 'LA RANITA SA DE CV',
-        totalProducts: 10,
-        totalPrice: 10256.5,
-        description: 'COCINA'
-      },
-    ]);
+    const orders = await this.ordersRepo.find({ relations: ['client', 'products'] });
+    return orders.map((order) => ({ ...order, client: order.client.username }));
   }
 
   async getOne(id: string) {
-    return Promise.resolve({
-      id,
-      client: 'LA RANITA SA DE CV',
-      totalProducts: 10,
-      totalPrice: 10256.5,
-      description: 'PERSONAL',
-      products: [
-        { name: 'PAPA BlANCA GRANDE', count: 10, price: 26.05, totalPrice: 2605 },
-        { name: 'PAPA BlANCA GRANDE', count: 10, price: 26.05, totalPrice: 2605 },
-        { name: 'PAPA BlANCA GRANDE', count: 10, price: 26.05, totalPrice: 2605 }
-      ]
-    });
+    const order = await this.ordersRepo.findOne(id, { relations: ['client', 'products'] });
+    return { ...order, client: order.client.username };
   }
 }
