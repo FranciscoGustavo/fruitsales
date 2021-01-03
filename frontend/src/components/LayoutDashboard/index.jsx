@@ -8,7 +8,7 @@ const LayoutDashboard = ({children}) => {
         HEADER
       </HeaderCSS>
       <NavCSS>
-        <Link href="/dashboard">
+        <Link href="/dashboard/products">
           <NavItemCSS>Productos</NavItemCSS>
         </Link>
         <Link href="/dashboard/users">

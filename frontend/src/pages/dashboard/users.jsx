@@ -1,7 +1,18 @@
-import { useMemo } from 'react';
-import { LayoutDashboard, Table } from '../../components';
+import { useState, useMemo } from 'react';
+import { useQuery } from '@apollo/client';
+import { LayoutDashboard, Table, EditButton } from '../../components';
+import { ALL_USERS } from '../../graphql';
 
 const UsersPage = () => {
+  const { loading, error, data } = useQuery(ALL_USERS);
+  const [modal, setModal] = useState(false);
+  const [user, setUser] = useState();
+
+  const handleEdit = (uuid) => {
+    alert(`Editando ${uuid}`);
+    setUser(data.users.find(({ id }) => uuid === id));
+  }
+
   const columns = useMemo(
     () => [
       {
@@ -9,26 +20,18 @@ const UsersPage = () => {
         accessor: 'username'
       },
       {
-        Header: 'Acciones',
         accessor: 'id',
-        Cell: <h1>Editar</h1>
+        Cell: ({ value }) => <EditButton uuid={value} handleEdit={handleEdit} />
       }
     ],
     []
   );
 
-  const data = useMemo(() => [
-    {
-      username: 'Francisco'
-    },
-    {
-      username: 'Gustavo'
-    }
-  ], []);
-
   return (
     <LayoutDashboard>
-      <Table columns={columns} data={data} />
+      { error ? <h1>Ups! algo salió mal</h1> : null }
+      { loading ? <h1>Cargando...</h1> : null }
+      { !error && !loading ? <Table columns={columns} data={data.users} /> : null }
     </LayoutDashboard>
   );
 }
