@@ -24,6 +24,9 @@ background-color: ${props => props.theme.primary};
 export const MainCSS = styled.div`
 grid-column: 2 / 3;
 grid-row: 2 / 3;
+height: 100%;
+padding: 28px;
+background-color: rgba(${props => props.theme.hexToRgba(props.theme.primary, 0.07)});
 `;
 
 export const NavItemCSS = styled.a`

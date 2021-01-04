@@ -14,3 +14,4 @@ export { default as Table } from './Table';
 export { default as EditButton } from './EditButton';
 export { default as ModalPage } from './ModalPage';
 export { default as FormUser } from './FormUser';
+export { default as FormOrder } from './FormOrder';

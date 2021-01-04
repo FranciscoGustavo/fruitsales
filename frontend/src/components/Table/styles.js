@@ -1,11 +1,5 @@
 import styled from 'styled-components';
 
-export const ContainerCSS = styled.div`
-height: 100%;
-padding: 28px;
-background-color: rgba(${props => props.theme.hexToRgba(props.theme.primary, 0.07)});
-`;
-
 export const TableContainerCSS = styled.div`
 width: 100%;
 border-radius: 14px;

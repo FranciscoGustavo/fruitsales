@@ -11,7 +11,7 @@ const OrdersPage = () => {
     { Header: 'Articulos', accessor: 'totalProducts' },
     { Header: 'Precio total', accessor: 'totalPrice' },
     { Header: 'Descripción', accessor: 'description' },
-    { id: 'view', Cell: <Link href="/dashboard/orders/details"><a>Ver</a></Link>}
+    { accessor: 'id', Cell: ({ value }) => (<Link href={`/dashboard/orders/${value}`}><a>Ver</a></Link>)}
   ];
 
   return (

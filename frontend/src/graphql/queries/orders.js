@@ -15,3 +15,21 @@ export const ALL_ORDERS = gql`{
   	}
   }
 }`;
+
+export const GET_ORDER = gql`
+query getOrder($id: ID!) {
+  order(id: $id) {
+    id
+    client
+    totalProducts
+    totalPrice
+    description
+    products {
+      name
+      count
+      price
+      totalPrice
+    }
+  }
+}
+`;
