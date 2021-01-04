@@ -1,6 +1,14 @@
 import Link from 'next/link';
 import { ContainerCSS, HeaderCSS, NavCSS, MainCSS,NavItemCSS } from './styles';
 
+const navItems = [
+  { url: '/dashboard/orders' , label: 'Pedidos' },
+  { url: '/dashboard/products' , label: 'Productos' },
+  { url: '/dashboard/clients' , label: 'Clientes' },
+  { url: '/dashboard/price-list' , label: 'Listas de precio' },
+  { url: '/dashboard/users' , label: 'Usuarios' },
+];
+
 const LayoutDashboard = ({children}) => {
   return (
     <ContainerCSS>
@@ -8,21 +16,11 @@ const LayoutDashboard = ({children}) => {
         HEADER
       </HeaderCSS>
       <NavCSS>
-        <Link href="/dashboard/products">
-          <NavItemCSS>Productos</NavItemCSS>
-        </Link>
-        <Link href="/dashboard/users">
-          <NavItemCSS>Usuarios</NavItemCSS>
-        </Link>
-        <Link href="/dashboard/price-list">
-          <NavItemCSS>Listas de precio</NavItemCSS>
-        </Link>
-        <Link href="/dashboard/orders">
-          <NavItemCSS>Pedidos</NavItemCSS>
-        </Link>
-        <Link href="/dashboard/clients">
-          <NavItemCSS>Clientes</NavItemCSS>
-        </Link>
+        {navItems.map(({ url, label }) => (
+          <Link href={url}>
+            <NavItemCSS>{label}</NavItemCSS>
+          </Link>
+        ))}
       </NavCSS>
       <MainCSS>
         {children}

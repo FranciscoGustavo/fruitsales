@@ -13,6 +13,7 @@ export const HeaderCSS = styled.div`
 grid-column: 1 / 3;
 grid-row: 1 / 2;
 box-shadow: 0 0 7px rgba(0, 0, 0, 0.14);
+z-index: 20;
 `;
 
 export const NavCSS = styled.div`
@@ -24,9 +25,6 @@ background-color: ${props => props.theme.primary};
 export const MainCSS = styled.div`
 grid-column: 2 / 3;
 grid-row: 2 / 3;
-height: 100%;
-padding: 28px;
-background-color: rgba(${props => props.theme.hexToRgba(props.theme.primary, 0.07)});
 `;
 
 export const NavItemCSS = styled.a`

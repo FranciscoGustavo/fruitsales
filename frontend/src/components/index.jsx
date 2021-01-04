@@ -15,3 +15,5 @@ export { default as EditButton } from './EditButton';
 export { default as ModalPage } from './ModalPage';
 export { default as FormUser } from './FormUser';
 export { default as FormOrder } from './FormOrder';
+export { default as HeaderActions } from './HeaderActions';
+export { default as ContainerBoard } from './ContainerBoard';

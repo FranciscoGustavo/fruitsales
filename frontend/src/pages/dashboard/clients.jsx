@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { useQuery } from '@apollo/client';
-import { LayoutDashboard, Table } from '../../components';
+import { LayoutDashboard, Table, ContainerBoard } from '../../components';
 import { ALL_CLIENTS } from '../../graphql';
 
 const ClientsPage = () => {
@@ -13,9 +13,11 @@ const ClientsPage = () => {
 
   return (
     <LayoutDashboard>
-      { error ? <h1>Ups! algo salió mal</h1> : null }
-      { loading ? <h1>Cargando...</h1> : null }
-      { !error && !loading ? <Table  handleColumns={columns} handleData={data.clients} /> : null }
+      <ContainerBoard>
+        { error ? <h1>Ups! algo salió mal</h1> : null }
+        { loading ? <h1>Cargando...</h1> : null }
+        { !error && !loading ? <Table  handleColumns={columns} handleData={data.clients} /> : null }
+      </ContainerBoard>
     </LayoutDashboard>
   );
 }

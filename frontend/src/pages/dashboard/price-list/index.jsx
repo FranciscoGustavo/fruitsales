@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { LayoutDashboard, Table } from '../../../components';
+import { LayoutDashboard, Table, ContainerBoard } from '../../../components';
 
 
 const PriceListPage = () => {
@@ -31,7 +31,9 @@ const PriceListPage = () => {
 
   return (
     <LayoutDashboard>
-      <Table handleColumns={columns} handleData={data}/>
+      <ContainerBoard>
+        <Table handleColumns={columns} handleData={data}/>
+      </ContainerBoard>
     </LayoutDashboard>
   );
 }

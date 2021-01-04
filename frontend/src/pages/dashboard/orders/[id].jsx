@@ -1,6 +1,6 @@
 import { useRouter } from 'next/router';
 import { useQuery } from '@apollo/client';
-import { LayoutDashboard, Table, FormOrder } from '../../../components';
+import { LayoutDashboard, Table, FormOrder, ContainerBoard } from '../../../components';
 import { GET_ORDER } from '../../../graphql';
 
 const PriceListPage = () => {
@@ -21,15 +21,17 @@ const PriceListPage = () => {
 
   return (
     <LayoutDashboard>
-      { error ? <h1>Ups! algo salió mal</h1> : null }
-      { loading ? <h1>Cargando...</h1> : null }
-      { !error && !loading 
-        ? <FormOrder
-            columns={columns}
-            order={data.order}
-            handleSave={handleSave}
+      <ContainerBoard>
+        { error ? <h1>Ups! algo salió mal</h1> : null }
+        { loading ? <h1>Cargando...</h1> : null }
+        { !error && !loading 
+          ? <FormOrder
+          columns={columns}
+          order={data.order}
+          handleSave={handleSave}
           /> 
-        : null }
+          : null }
+      </ContainerBoard>
     </LayoutDashboard>
   );
 }

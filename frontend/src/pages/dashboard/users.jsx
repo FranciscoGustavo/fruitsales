@@ -1,5 +1,5 @@
 import { useQuery } from '@apollo/client';
-import { LayoutDashboard, Table, EditButton, ModalPage, FormUser } from '../../components';
+import { LayoutDashboard, Table, EditButton, ModalPage, FormUser, ContainerBoard } from '../../components';
 import { ALL_USERS } from '../../graphql';
 import { useHandleData } from '../../hooks';
 
@@ -31,17 +31,19 @@ const UsersPage = () => {
 
   return (
     <LayoutDashboard>
-      { error ? <h1>Ups! algo salió mal</h1> : null }
-      { loading ? <h1>Cargando...</h1> : null }
-      { !error && !loading ? <Table  handleColumns={columns} handleData={data.users} /> : null }
-      <ModalPage isOpen={modal}>
-        <FormUser 
-          user={user}
-          close={handleClose}
-          save={handleSave}
-          handleChange={handleChange}
-        />
-      </ModalPage>
+      <ContainerBoard>
+        { error ? <h1>Ups! algo salió mal</h1> : null }
+        { loading ? <h1>Cargando...</h1> : null }
+        { !error && !loading ? <Table  handleColumns={columns} handleData={data.users} /> : null }
+        <ModalPage isOpen={modal}>
+          <FormUser 
+            user={user}
+            close={handleClose}
+            save={handleSave}
+            handleChange={handleChange}
+            />
+        </ModalPage>
+      </ContainerBoard>
     </LayoutDashboard>
   );
 }
