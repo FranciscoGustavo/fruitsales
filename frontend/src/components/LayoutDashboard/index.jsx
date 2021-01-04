@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { ContainerCSS, HeaderCSS, NavCSS, MainCSS,NavItemCSS } from './styles';
+import { ContainerCSS, HeaderCSS, NavCSS, MainCSS, NavItemCSS, LogoCSS } from './styles';
 
 const navItems = [
   { url: '/dashboard/orders' , label: 'Pedidos' },
@@ -13,7 +13,10 @@ const LayoutDashboard = ({children}) => {
   return (
     <ContainerCSS>
       <HeaderCSS>
-        HEADER
+        <LogoCSS>
+          <img src="/logo.svg" alt="vegyfresh logo" />
+          <h1>VegyFresh</h1>
+        </LogoCSS>
       </HeaderCSS>
       <NavCSS>
         {navItems.map(({ url, label }) => (

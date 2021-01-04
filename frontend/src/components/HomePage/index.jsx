@@ -1,4 +1,4 @@
-import { Header, Card, ProductsList, Description, Footer } from '../index';
+import { Header, Card, ProductsList, Description, Footer } from './components';
 import { ContainerCSS } from './styles';
 
 const HomePage = ({ products }) => {

@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { hexToRgb } from '../../utils';
+import { hexToRgb } from '../../../../utils';
 export const FooterCSS = styled.footer`
 display: grid;
 grid-template-columns: repeat(4, 1fr);

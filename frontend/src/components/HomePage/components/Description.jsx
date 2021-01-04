@@ -1,4 +1,4 @@
-import { themelight } from '../themes';
+import { themelight } from '../../../themes';
 
 const Description = () => (
   <div className="container">
