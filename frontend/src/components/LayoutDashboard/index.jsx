@@ -20,7 +20,7 @@ const LayoutDashboard = ({children}) => {
       </HeaderCSS>
       <NavCSS>
         {navItems.map(({ url, label }) => (
-          <Link href={url}>
+          <Link key={url} href={url}>
             <NavItemCSS>{label}</NavItemCSS>
           </Link>
         ))}

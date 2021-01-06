@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-export const useHandleData = () => {
+export const useHandleData = (schema) => {
   const [modal, setModal] = useState(false);
   const [data, setData] = useState();
 
@@ -21,11 +21,17 @@ export const useHandleData = () => {
     });
   }
 
+  const handleNew = () => {
+    setData({ ...schema });
+    setModal(true);
+  }
+
   return {
     modal,
     data,
     handleOpen,
     handleClose,
-    handleChange
+    handleChange,
+    handleNew
   }
 }

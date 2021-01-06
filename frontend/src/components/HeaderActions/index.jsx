@@ -1,9 +1,9 @@
 import { HeaderCSS } from './styles';
 
-const HeaderActions = () => {
+const HeaderActions = ({ handleNew }) => {
   return (
     <HeaderCSS>
-      <button>Guadar</button>
+      <button onClick={handleNew}>Nuevo</button>
       <button>Imprimir</button>
       <button>Enviar por correo</button>
     </HeaderCSS>

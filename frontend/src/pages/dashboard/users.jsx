@@ -3,6 +3,11 @@ import { LayoutDashboard, Table, EditButton, ModalPage, FormUser, ContainerBoard
 import { ALL_USERS } from '../../graphql';
 import { useHandleData } from '../../hooks';
 
+const schemaUser = {
+  id: '',
+  username: '',
+};
+
 const UsersPage = () => {
   const { loading, error, data } = useQuery(ALL_USERS);
   const { 
@@ -10,10 +15,16 @@ const UsersPage = () => {
     data: user,
     handleOpen,
     handleClose,
-    handleChange
-  } = useHandleData();
+    handleChange,
+    handleNew
+  } = useHandleData(schemaUser);
 
   const handleSave = (user) => {
+    if (user.id === '') {
+      alert('CREANDO');
+    } else {
+      alert('ACTUALIZANDO')
+    }
     console.log(user);
     handleClose();
   }
@@ -31,7 +42,9 @@ const UsersPage = () => {
 
   return (
     <LayoutDashboard>
-      <ContainerBoard>
+      <ContainerBoard
+        handleNew={handleNew}
+      >
         { error ? <h1>Ups! algo salió mal</h1> : null }
         { loading ? <h1>Cargando...</h1> : null }
         { !error && !loading ? <Table  handleColumns={columns} handleData={data.users} /> : null }
@@ -41,7 +54,7 @@ const UsersPage = () => {
             close={handleClose}
             save={handleSave}
             handleChange={handleChange}
-            />
+          />
         </ModalPage>
       </ContainerBoard>
     </LayoutDashboard>

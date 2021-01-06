@@ -1,10 +1,12 @@
 import { HeaderActions } from '../index';
 import { ContainerCSS, WrapperCSS } from './styles';
 
-const ContainerBoard = ({ children }) => {
+const ContainerBoard = ({ children, handleNew }) => {
   return (
     <ContainerCSS>
-      <HeaderActions />
+      <HeaderActions
+        handleNew={handleNew}
+      />
       <WrapperCSS>
         {children}
       </WrapperCSS>
